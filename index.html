@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tourist Destination</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!---Bootstrap CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <!---Bootstrap CSS-->
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/dist/css/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css">
+
+    <style>
+        /* Navbar hover */
+        #nav:hover {
+            color: blue;
+        }
+
+        /* Hero Banner Style */
+        .hero-banner {
+            background: linear-gradient(135deg, #2f80ed, #56ccf2);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            margin: 40px auto;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: -30%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+            z-index: 0;
+            animation: rotate 12s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-banner h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .framer-lcznf3-container {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        body {
+            padding-top: 90px;
+            /* Adjust height depending on navbar height */
+        }
+
+
+        /* Custom Navbar Styling */
+        .custom-navbar {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            /* Elegant gradient */
+            padding: 15px 30px;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .custom-navbar .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .custom-navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #ffdd57;
+            transition: 0.3s;
+        }
+
+        .custom-navbar .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .custom-navbar .nav-link:hover {
+            color: #ffdd57 !important;
+        }
+
+        .custom-navbar .navbar-brand {
+            font-size: 28px;
+            color: #fff !important;
+        }
+
+        /* Add spacing for fixed navbar */
+        body {
+            padding-top: 90px;
+        }
+
+
+
+        /* 🌐 Enhanced Custom Navbar */
+        .custom-navbar {
+            background: rgba(30, 60, 114, 0.75);
+            /* Transparent glassy background */
+            backdrop-filter: blur(12px);
+            /* Blur for glassmorphism */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        /* 🧭 Nav Brand */
+        .custom-navbar .navbar-brand {
+            font-size: 30px;
+            color: #fff !important;
+            font-weight: 700;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            transition: color 0.3s ease;
+        }
+
+        /* ✨ Nav Links */
+        .custom-navbar .nav-link {
+            color: #f5f5f5 !important;
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* 🟡 Hover underline + background */
+        .custom-navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 5px;
+            left: 10%;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .custom-navbar .nav-link:hover {
+            color: #ffd700 !important;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-navbar .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* 🟢 Responsive Toggler Icon (white) */
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* 🧊 Smooth Scroll Offset */
+        body {
+            padding-top: 90px;
+            scroll-behavior: smooth;
+        }
+
+
+        /* Section Headings */
+        #featured-3 h2,
+        #custom-cards h2,
+        .container h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0a4275;
+            border-bottom: 3px solid #0a4275;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* Featured Columns */
+        .feature.col {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .feature.col:hover {
+            transform: translateY(-5px);
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature.col img {
+            height: 60px;
+            width: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 2px solid #0a4275;
+        }
+
+        /* Feature Titles */
+        .feature h3,
+        .card h3 {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Call to Action Links */
+        a.icon-link {
+            color: #0a4275;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a.icon-link:hover {
+            color: #f4511e;
+        }
+
+        /* Cards */
+        .card.card-cover {
+            background-size: cover !important;
+            background-position: center center;
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card.card-cover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Feature Icons */
+        .feature-icon-small {
+            width: 50px;
+            height: 50px;
+            background-color: #0a4275;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: #0a4275;
+            border-color: #0a4275;
+            padding: 12px 25px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: #07325a;
+            border-color: #07325a;
+        }
+
+        /*Features Image*/
+        #features-img {
+            height: 300px;
+            width: 300px;
+            border-radius: 100%;
+        }
+
+        .features-img1 {
+            margin-left: 50%;
+        }
+
+        .features-img2 {
+            margin-left: 30%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--Font Awesome Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+
+    <!--Navbar at the top -->
+    <style>
+        #i,
+        #a {
+            display: inline;
+        }
+
+        #i {
+            color: red;
+            font-size: 20px;
+        }
+        video {
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        #img-nav {
+            height: 80px;
+            width: 80px;
+            border-radius: 100%;
+        }
+        .nav-gers-img {
+            filter: blur('1px');
+        }
+        .gers-b {
+            margin-right: 20px;
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="https://en.wikipedia.org/wiki/Dubai">🌍 Tourist Destination</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-4">
+                    <li class="nav-item">
+                        <i id="i" class="fa fa-home"></i>
+                        <a id="a" class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <i id="i" class="fa fa-tools"></i>
+                        <a id="a" class="nav-link" href="services.php">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <i id="i" class="phone"></i>
+                        <a id="a" class="nav-link" href="./contact.php">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <i id="i" class="fa fa-earth"></i>
+                        <a id="a" class="nav-link" href="./explore.php">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <i id="i" class="fa fa-lock"></i>
+                        <a id="a" class="nav-link" href="./admin.php">Admin</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <b class="gers-b">Gers</b>
+            <a class="nav-gers-img" href="https://www.facebook.com/"><img id="img-nav" class="navbar-brand" src="./gers.jpg" alt=""></a>
+    </nav> <!-- Hero Section -->
+    <div class="hero-banner">
+        <h1>Tourist Destination</h1>
+    </div>
+    <!-- Carousel -->
+    <div style="height: 800px;" class="framer-lcznf3-container">
+        <a href="https://elements.envato.com/scenic-drive-from-queenstown-to-glenorchy-in-new-z-GS89PKN">
+            <video src="https://framerusercontent.com/assets/jPGmgjk0UnrlNS7OFk2YvyM4c.mp4" loop muted playsinline
+                autoplay></video>
+        </a>
+    </div>
+
+    <!-- Include Footer -->
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--body-->
+    <!-------------------------------------------->
+    <!-------------Dubai Collections-------------->
+    <!-------------------------------------------->
+    <div class="container px-4 py-5" id="featured-3">
+        <h2 class="pb-2 border-bottom">Dubai Collections</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="feature col">
+                <div>
+                    <img style="height: 50px; width: 50px; border-radius:100%;" src="./dubai1.jpg" alt="">
+                </div>
+                <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                    and probably just keep going until we run out of words.</p>
+                <a href="https://www.expedia.co.uk/Dubai.dx1079"
+                    class="icon-link">
+                    Call to action
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="feature col">
+                <div>
+                    <img style="height: 50px; width: 50px; border-radius:100%;" src="./dubai2.jpg"
+                        alt="">
+                </div>
+                <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                    and probably just keep going until we run out of words.</p>
+                <a href="https://theprogenygroup.com/knowledge-hub/a-guide-to-moving-to-dubai-from-the-uk/"
+                    class="icon-link">
+                    Call to action
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="feature col">
+                <div>
+                    <img style="height: 50px; width: 50px; border-radius:100%;" src="./dubai3.jpg" alt="">
+                </div>
+                <h3 class="fs-2 text-body-emphasis">Featured title</h3>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                    and probably just keep going until we run out of words.</p>
+                <a href="https://www.consultancy-me.com/news/9519/dubai-retains-top-25-position-in-kearneys-global-cities-index" class="icon-link">
+                    Call to action
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------->
+    <!----------End-Dubai Collections------------->
+    <!-------------------------------------------->
+
+
+    <!-------------------------------------------->
+    <!------------------Cards--------------------->
+    <!-------------------------------------------->
+    <div class="container px-4 py-5" id="custom-cards">
+        <h2 class="pb-2 border-bottom">Custom cards</h2>
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('./dubai4.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Burj Khalifa</h3>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto"> <img src="./dubai4.jpg" alt="Bootstrap" width="32"
+                                    height="32" class="rounded-circle border border-white"> </li>
+                            <li class="d-flex align-items-center me-3"> <svg class="bi me-2" width="1em" height="1em"
+                                    role="img" aria-label="Location">
+                                    <use xlink:href="#geo-fill"></use>
+                                </svg> <small>Burj Khalifa</small> </li>
+                            <li class="d-flex align-items-center"> <svg class="bi me-2" width="1em" height="1em"
+                                    role="img" aria-label="Duration">
+                                    <use xlink:href="#calendar3"></use>
+                                </svg> <small>3d</small> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('./dubai5.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Dubai Frame</h3>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto"> <img src="./dubai5.jpg" alt="Bootstrap" width="32" height="32"
+                                    class="rounded-circle border border-white"> </li>
+                            <li class="d-flex align-items-center me-3"> <svg class="bi me-2" width="1em" height="1em"
+                                    role="img" aria-label="Location">
+                                    <use xlink:href="#geo-fill"></use>
+                                </svg> <small>Dubai Frame</small> </li>
+                            <li class="d-flex align-items-center"> <svg class="bi me-2" width="1em" height="1em"
+                                    role="img" aria-label="Duration">
+                                    <use xlink:href="#calendar3"></use>
+                                </svg> <small>4d</small> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('./dubai6.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Atificial Islands</h3>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto"> <img src="./dubai6.jpg" alt="Bootstrap" width="32" height="32"
+                                    class="rounded-circle border border-white"> </li>
+                            <li class="d-flex align-items-center me-3"> <svg class="bi me-2" width="1em" height="1em"
+                                    role="img" aria-label="Location">
+                                    <use xlink:href="#geo-fill"></use>
+                                </svg> <small>Atificial Islands</small> </li>
+                            <li class="d-flex align-items-center"> <svg class="bi me-2" width="1em" height="1em"
+                                    role="img" aria-label="Duration">
+                                    <use xlink:href="#calendar3"></use>
+                                </svg> <small>5d</small> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------->
+    <!---------------End-Cards-------------------->
+    <!-------------------------------------------->
+
+
+    <!-------------------------------------------->
+    <!--------------Simple Blog Post-------------->
+    <!-------------------------------------------->
+    <div style="margin-left: 20%;" class="col-md-7">
+        <h3 class="pb-4 mb-4 fst-italic border-bottom">
+            From the Firehose
+        </h3>
+        <article class="blog-post">
+            <h2 class="display-5 link-body-emphasis mb-1">Sample blog post</h2>
+            <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
+            <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic
+                typography, lists, tables, images, code, and more are all supported as expected.</p>
+            <hr>
+            <p>This is some additional paragraph placeholder content. It has been written to fill the available space
+                and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+                demonstration flowing, so be on the lookout for this exact same string of text.</p>
+            <h2>Blockquotes</h2>
+            <p>This is an example blockquote in action:</p>
+            <blockquote class="blockquote">
+                <p>Quoted text goes here.</p>
+            </blockquote>
+            <p>This is some additional paragraph placeholder content. It has been written to fill the available space
+                and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+                demonstration flowing, so be on the lookout for this exact same string of text.</p>
+            <h3>Example lists</h3>
+            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other
+                highly repetitive body text used throughout. This is an example unordered list:</p>
+            <ul>
+                <li>First list item</li>
+                <li>Second list item with a longer description</li>
+                <li>Third list item to close it out</li>
+            </ul>
+            <p>And this is an ordered list:</p>
+            <ol>
+                <li>First list item</li>
+                <li>Second list item with a longer description</li>
+                <li>Third list item to close it out</li>
+            </ol>
+            <p>And this is a definition list:</p>
+            <dl>
+                <dt>HyperText Markup Language (HTML)</dt>
+                <dd>The language used to describe and define the content of a Web page</dd>
+                <dt>Cascading Style Sheets (CSS)</dt>
+                <dd>Used to describe the appearance of Web content</dd>
+                <dt>JavaScript (JS)</dt>
+                <dd>The programming language used to build advanced Web sites and applications</dd>
+            </dl>
+            <h2>Inline HTML elements</h2>
+            <p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
+            <ul>
+                <li><strong>To bold text</strong>, use <code
+                        class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
+                <li><em>To italicize text</em>, use <code
+                        class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
+                <li>Abbreviations, like <abbr title="HyperText Markup Language">HTML</abbr> should use <code
+                        class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code
+                        class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.</li>
+                <li>Citations, like <cite>— Mark Otto</cite>, should use <code
+                        class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
+                <li><del>Deleted</del> text should use <code
+                        class="language-plaintext highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text
+                    should use <code class="language-plaintext highlighter-rouge">&lt;ins&gt;</code>.</li>
+                <li>Superscript <sup>text</sup> uses <code
+                        class="language-plaintext highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub>
+                    uses <code class="language-plaintext highlighter-rouge">&lt;sub&gt;</code>.</li>
+            </ul>
+            <p>Most of these elements are styled by browsers with few modifications on our part.</p>
+            <h2>Heading</h2>
+            <p>This is some additional paragraph placeholder content. It has been written to fill the available space
+                and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+                demonstration flowing, so be on the lookout for this exact same string of text.</p>
+            <h3>Sub-heading</h3>
+            <p>This is some additional paragraph placeholder content. It has been written to fill the available space
+                and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+                demonstration flowing, so be on the lookout for this exact same string of text.</p>
+            <pre><code>Example code block</code></pre>
+            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other
+                highly repetitive body text used throughout.</p>
+        </article>
+        <article class="blog-post">
+            <h2 class="display-5 link-body-emphasis mb-1">Another blog post</h2>
+            <p class="blog-post-meta">December 23, 2020 by <a href="#">Jacob</a></p>
+            <p>This is some additional paragraph placeholder content. It has been written to fill the available space
+                and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+                demonstration flowing, so be on the lookout for this exact same string of text.</p>
+            <blockquote>
+                <p>Longer quote goes here, maybe with some <strong>emphasized text</strong> in the middle of it.</p>
+            </blockquote>
+            <p>This is some additional paragraph placeholder content. It has been written to fill the available space
+                and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+                demonstration flowing, so be on the lookout for this exact same string of text.</p>
+            <h3>Example table</h3>
+            <p>And don't forget about tables in these posts:</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Upvotes</th>
+                        <th>Downvotes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alice</td>
+                        <td>10</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>Bob</td>
+                        <td>4</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Charlie</td>
+                        <td>7</td>
+                        <td>9</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Totals</td>
+                        <td>21</td>
+                        <td>23</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other
+                highly repetitive body text used throughout.</p>
+        </article>
+        <article class="blog-post">
+            <h2 class="display-5 link-body-emphasis mb-1">New feature</h2>
+            <p class="blog-post-meta">December 14, 2020 by <a href="#">Chris</a></p>
+            <p>This is some additional paragraph placeholder content. It has been written to fill the available space
+                and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+                demonstration flowing, so be on the lookout for this exact same string of text.</p>
+            <ul>
+                <li>First list item</li>
+                <li>Second list item with a longer description</li>
+                <li>Third list item to close it out</li>
+            </ul>
+            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other
+                highly repetitive body text used throughout.</p>
+        </article>
+        <nav class="blog-pagination" aria-label="Pagination"> <a class="btn btn-outline-primary rounded-pill"
+                href="#">Older</a> <a class="btn btn-outline-secondary rounded-pill disabled"
+                aria-disabled="true">Newer</a> </nav>
+    </div>
+    <br><br>
+    <hr>
+    <br><br>
+    <!-------------------------------------------->
+    <!------------End-Simple Blog Post------------>
+    <!-------------------------------------------->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .custom-card-section {
+            margin: 3rem 0;
+        }
+
+        .card-col {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #27154D;
+            margin-top: 1rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .img-fluid:hover {
+            transform: scale(1.05);
+        }
+
+        .shadow-sm {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .rounded {
+            border-radius: 0.5rem;
+        }
+        #footer-img {
+            height: 80%;
+            width: 800px;
+        }
+    </style>
+    <!--Footer-->
+    <div class="container">
+        <div class="row custom-card-section">
+            <div class="col-md-4 card-col">
+                <a href="#">
+                    <img id="footer-img" src="./dubai4.jpg" alt="Heading1" class="img-fluid rounded shadow-sm">
+                </a>
+                <h2 class="card-title">Heading1</h2>
+                <p class="card-text">This is a paragraph.</p>
+            </div>
+            <div class="col-md-4 card-col">
+                <a href="#">
+                    <img id="footer-img" src="./dubai5.jpg" alt="Heading2" class="img-fluid rounded shadow-sm">
+                </a>
+                <h2 class="card-title">Heading2</h2>
+                <p class="card-text">This is a paragraph.</p>
+            </div>
+            <div class="col-md-4 card-col">
+                <a href="#">
+                    <img id="footer-img" src="./dubai6.jpg" alt="Heading3" class="img-fluid rounded shadow-sm">
+                </a>
+                <h2 class="card-title">Heading3</h2>
+                <p class="card-text">This is a paragraph.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <footer class="py-5">
+            <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                        <h5>Subscribe to our newsletter</h5>
+                        <p>Monthly digest of what's new and exciting from us.</p>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2"> <label for="newsletter1"
+                                class="visually-hidden">Email address</label> <input id="newsletter1" type="email"
+                                class="form-control" placeholder="Email address"> <button class="btn btn-primary"
+                                type="button">Subscribe</button> </div>
+                    </form>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>© 2025 Company, Inc. All rights reserved.</p>
+                <ul class="list-unstyled d-flex">
+                    <li class="ms-3"><a class="link-body-emphasis" href="#" aria-label="Instagram"><svg class="bi"
+                                width="24" height="24">
+                                <use xlink:href="#instagram"></use>
+                            </svg></a></li>
+                    <li class="ms-3"><a class="link-body-emphasis" href="#" aria-label="Facebook"><svg class="bi"
+                                width="24" height="24" aria-hidden="true">
+                                <use xlink:href="#facebook"></use>
+                            </svg></a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</body>
+
+
+</html>
+
+
+
